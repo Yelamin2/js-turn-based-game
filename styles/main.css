@@ -1,0 +1,479 @@
+@import url("https://fonts.googleapis.com/css2?family=Dangrek&family=Press+Start+2P&family=Silkscreen&display=swap");
+@import "../styles/media_queries.css";
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+audio {
+  display: none;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-image: url("../images/background-sky2.JPG");
+  background-size: cover;
+}
+
+.game-pad {
+  width: 1000px;
+  height: 650px;
+  background-color: #a5a4a4;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 50px;
+  border: 10px solid #848282;
+  box-shadow: 10px 10px 20px #000;
+}
+
+.game-options {
+  padding: 20px 0;
+  width: 90%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.on-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 10px;
+  border-radius: 30px;
+  background-color: #848282;
+  border: 2px solid #8d8a8a;
+}
+
+.on-btn > button,
+.on-btn > span {
+  display: inline-block;
+  text-align: center;
+}
+
+.on-btn > button {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background-color: #e34e45;
+  border: 5px solid #a43832;
+  box-shadow: 0 4px #999;
+}
+
+.on-btn > button:active {
+  box-shadow: 0 2px #666;
+  transform: translateY(2px);
+}
+
+.on-btn > span {
+  font-family: "Silkscreen", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.start-btn,
+.character {
+  display: block;
+  width: 30%;
+  padding: 5px;
+  border-radius: 30px;
+  border: 2px solid #444444;
+  background-color: #848282;
+  text-align: center;
+  font-family: "Silkscreen", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  box-shadow: 0 9px #999;
+}
+
+.start-btn:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.game-screen {
+  width: 80%;
+  height: 450px;
+  position: relative;
+}
+.game-screen > .screen-img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  border-radius: 30px;
+  border: 5px solid #000;
+}
+
+.hero-text,
+.villain-text {
+  width: 300px;
+  height: 50px;
+  border-radius: 20px;
+  font-family: "Silkscreen", Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  text-align: center;
+  color: #73fa34;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+}
+.villain-text {
+  color: #e91f15;
+}
+.hero-text {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.villain-text {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.vs-logo {
+  display: none;
+  position: absolute;
+  width: 10%;
+  height: 50px;
+  top: 10px;
+  left: 45%;
+}
+
+.action-text {
+  display: none;
+  position: absolute;
+  width: 90%;
+  height: 50px;
+  top: 85px;
+  left: 5%;
+  border-radius: 20px;
+  font-family: "Silkscreen", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  text-align: center;
+  color: #f5eb60;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.heroPower {
+  display: none;
+  width: 250px;
+  height: 20px;
+  background: linear-gradient(45deg, #f62d2d, #f7b538);
+  position: absolute;
+  top: 61px;
+  left: 10px;
+  border-radius: 10px;
+  z-index: 20;
+  border: 3px rgba(0, 0, 0, 0.8);
+  border-style: inset;
+}
+
+.villainPower {
+  display: none;
+  width: 250px;
+  height: 20px;
+  background: linear-gradient(45deg, #f7b538, #f62d2d);
+  position: absolute;
+  top: 61px;
+  right: 10px;
+  border-radius: 10px;
+  z-index: 20;
+  border: 3px rgba(0, 0, 0, 0.8);
+  border-style: inset;
+}
+.heroPower-shadow {
+  display: none;
+  width: 250px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 61px;
+  left: 10px;
+  border-radius: 10px;
+  z-index: 10;
+  border-color: rgba(118, 118, 118, 0.3);
+  border-width: 1px;
+  border-style: inset;
+}
+
+.villainPower-shadow {
+  display: none;
+  width: 250px;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 61px;
+  right: 10px;
+  border-radius: 10px;
+  z-index: 10;
+  border-color: rgba(118, 118, 118, 0.3);
+  border-width: 1px;
+  border-style: inset;
+}
+.players {
+  display: none;
+  position: absolute;
+  top: 120px;
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.players > img {
+  display: none;
+  width: 200px;
+  height: auto;
+}
+
+.actions {
+  width: 80%;
+}
+
+.actions > ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 90px;
+}
+
+.actions > ul > li {
+  width: 200px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actions > ul > li > button {
+  display: block;
+  width: 90%;
+  height: 50%;
+  border-radius: 30px;
+  text-transform: uppercase;
+  font-family: "Silkscreen", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  letter-spacing: -0.5px;
+  box-shadow: 0 9px #999;
+}
+
+.actions > ul > li > button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.actions > ul > li:nth-child(1) > button {
+  background-color: #a07cfb;
+  border: 5px solid #6a51aa;
+}
+.actions > ul > li:nth-child(2) > button {
+  background-color: #4ea3ef;
+  border: 5px solid #3877ad;
+}
+.actions > ul > li:nth-child(3) > button {
+  background-color: #91dc6f;
+  border: 5px solid #65994d;
+}
+.actions > ul > li:nth-child(4) > button {
+  background-color: #f5eb60;
+  border: 5px solid #bdb549;
+}
+.actions > ul > li:nth-child(5) > button {
+  background-color: #e34e45;
+  border: 5px solid #a43832;
+}
+
+/* -----MEDIA-QUERIES----- */
+@media (max-width: 505px) {
+  .game-pad {
+    width: 300px;
+    height: 300px;
+    background-color: black;
+    border-radius: 40px;
+    border: 3px solid #848282;
+  }
+  .game-options {
+    padding: 3px 0;
+  }
+
+  .on-btn {
+    padding: 4px 1px;
+    border-radius: 20px;
+    width: 30%;
+  }
+  .on-btn > button {
+    height: 16px;
+    width: 16px;
+    box-shadow: 0 2px #999;
+  }
+  .on-btn > button:active {
+    box-shadow: 0 2px #666;
+    transform: translateY(1px);
+  }
+  .on-btn > span {
+    font-size: 10px;
+    margin-left: 4px;
+  }
+  .start-btn,
+  .character {
+    width: 25%;
+    padding: 3px;
+    border-radius: 25px;
+    border: 2px solid #444444;
+    background-color: #848282;
+    font-size: 10px;
+    box-shadow: 0 3px #999;
+  }
+  .start-btn:active {
+    box-shadow: 0 3px #666;
+    transform: translateY(2px);
+  }
+  .game-screen {
+    width: 99%;
+    height: 250px;
+  }
+  .game-screen > .screen-img {
+    width: 100%;
+    height: 225px;
+    border-radius: 30px;
+    border: 2px solid #000;
+  }
+  .hero-text,
+  .villain-text {
+    top: -200%;
+    width: 80px;
+    height: 30px;
+    border-radius: 20px;
+    font-family: "Silkscreen", Arial, Helvetica, sans-serif;
+    font-size: 8px;
+    text-align: center;
+    color: #73fa34;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .villain-text {
+    color: #e91f15;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .vs-logo {
+    display: none;
+    height: 20px;
+    top: 16px;
+  }
+
+  .action-text {
+    display: none;
+    position: absolute;
+    width: 95%;
+    height: 30px;
+    top: 45px;
+    left: 2%;
+    border-radius: 20px;
+    font-family: "Silkscreen", Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    text-align: center;
+    color: #f5eb60;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .heroPower {
+    display: none;
+    width: 25px;
+    height: 20px;
+    background: linear-gradient(45deg, #18360b, #73fa34);
+    position: absolute;
+    top: -95px;
+    left: 10px;
+    border-radius: 10px;
+    z-index: 20;
+    border: 3px rgba(0, 0, 0, 0.8);
+    border-style: inset;
+  }
+
+  .villainPower {
+    display: none;
+    width: 25px;
+    height: 20px;
+    background: linear-gradient(45deg, #fd2318, #420a07);
+    position: absolute;
+    top: -70px;
+    right: 10px;
+    border-radius: 10px;
+    z-index: 20;
+    border: 3px rgba(0, 0, 0, 0.8);
+    border-style: inset;
+  }
+  .heroPower-shadow {
+    display: none;
+    width: 230px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: -95px;
+    right: 10px;
+    border-radius: 10px;
+    z-index: 10;
+    border-color: rgba(118, 118, 118, 0.3);
+    border-width: 1px;
+    border-style: inset;
+  }
+
+  .villainPower-shadow {
+    display: none;
+    width: 250px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: -70px;
+    right: 10px;
+    border-radius: 10px;
+    z-index: 10;
+    border-color: rgba(118, 118, 118, 0.3);
+    border-width: 1px;
+    border-style: inset;
+  }
+  .players {
+    top: 95px;
+    width: 100%;
+    padding: 30px 1px;
+  }
+
+  .players > img {
+    display: none;
+    width: 50px;
+    height: auto;
+  }
+  .actions {
+    width: 100%;
+    margin-top: 20px;
+  }
+  .actions > ul > li {
+    width: 500px;
+  }
+  .actions > ul > li > button {
+    width: 90%;
+    height: 50%;
+    font-size: 8px;
+  }
+}
